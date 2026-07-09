@@ -1,8 +1,14 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
+from flask_caching import Cache
 
-# These live here (instead of in models.py or __init__.py) so that
-# models.py, schemas.py, and app/__init__.py can all import them
-# without creating circular imports.
 db = SQLAlchemy()
 ma = Marshmallow()
+
+# key_func=get_remote_address means limits are tracked per visitor IP.
+limiter = Limiter(key_func=get_remote_address)
+
+# Simple in-memory cache 
+cache = Cache()

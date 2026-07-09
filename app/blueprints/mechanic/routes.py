@@ -1,5 +1,5 @@
 from flask import request, jsonify
-from app.extensions import db
+from app.extensions import db, cache
 from app.models import Mechanic
 from . import mechanic_bp
 from .schemas import mechanic_schema, mechanics_schema
@@ -18,6 +18,7 @@ def create_mechanic():
 
 
 @mechanic_bp.route('/', methods=['GET'])
+@cache.cached(timeout=60)
 def get_mechanics():
     mechanics = Mechanic.query.all()
     return mechanics_schema.jsonify(mechanics), 200
@@ -47,3 +48,10 @@ def delete_mechanic(id):
     db.session.delete(mechanic)
     db.session.commit()
     return jsonify({"message": f"Mechanic {id} deleted"}), 200
+
+
+@mechanic_bp.route('/most-tickets', methods=['GET'])
+def mechanics_by_ticket_count():
+    mechanics = Mechanic.query.all()
+    ranked = sorted(mechanics, key=lambda m: len(m.service_tickets), reverse=True)
+    return mechanics_schema.jsonify(ranked), 200
