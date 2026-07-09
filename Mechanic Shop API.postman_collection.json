@@ -14,7 +14,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n     \"name\": \"Jane Doe\",\r\n     \"email\": \"jane@example.com\",\r\n     \"phone\": \"555-123-4567\"\r\n   }",
+          "raw": "{\r\n     \"name\": \"Alex Rivera\",\r\n     \"email\": \"alex@example.com\",\r\n     \"phone\": \"555-222-3333\",\r\n     \"password\": \"mypassword123\"\r\n   }",
           "options": {
             "raw": {
               "language": "json"
@@ -24,9 +24,17 @@
         "url": {
           "raw": "http://127.0.0.1:5000/customers/",
           "protocol": "http",
-          "host": ["127", "0", "0", "1"],
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
           "port": "5000",
-          "path": ["customers", ""]
+          "path": [
+            "customers",
+            ""
+          ]
         }
       },
       "response": []
@@ -38,7 +46,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n     \"name\": \"Sam Torres\",\r\n     \"email\": \"sam@example.com\",\r\n     \"phone\": \"555-987-6543\",\r\n     \"salary\": 55000.0\r\n   }",
+          "raw": "{\r\n     \"name\": \"Sam Torres\",\r\n     \"email\": \"sam5@example.com\",\r\n     \"phone\": \"555-987-6543\",\r\n     \"salary\": 55000.0\r\n   }",
           "options": {
             "raw": {
               "language": "json"
@@ -48,9 +56,17 @@
         "url": {
           "raw": "http://127.0.0.1:5000/mechanics/",
           "protocol": "http",
-          "host": ["127", "0", "0", "1"],
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
           "port": "5000",
-          "path": ["mechanics", ""]
+          "path": [
+            "mechanics",
+            ""
+          ]
         }
       },
       "response": []
@@ -62,7 +78,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n     \"VIN\": \"1HGCM82633A004352\",\r\n     \"service_date\": \"2026-07-06\",\r\n     \"service_desc\": \"Brake pad replacement\",\r\n     \"customer_id\": 1\r\n   }",
+          "raw": "{\r\n     \"VIN\": \"1HGCM82633A004352\",\r\n     \"service_date\": \"2026-07-06\",\r\n     \"service_desc\": \"Brake pad replacement\",\r\n     \"customer_id\": 3\r\n   }",
           "options": {
             "raw": {
               "language": "json"
@@ -72,9 +88,17 @@
         "url": {
           "raw": "http://127.0.0.1:5000/service-tickets/",
           "protocol": "http",
-          "host": ["127", "0", "0", "1"],
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
           "port": "5000",
-          "path": ["service-tickets", ""]
+          "path": [
+            "service-tickets",
+            ""
+          ]
         }
       },
       "response": []
@@ -85,12 +109,110 @@
         "method": "PUT",
         "header": [],
         "url": {
-          "raw": "http://127.0.0.1:5000/service-tickets/1/assign-mechanic/1",
+          "raw": "http://127.0.0.1:5000/service-tickets/5/assign-mechanic/5",
           "protocol": "http",
-          "host": ["127", "0", "0", "1"],
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
           "port": "5000",
-          "path": ["service-tickets", "1", "assign-mechanic", "1"]
+          "path": [
+            "service-tickets",
+            "5",
+            "assign-mechanic",
+            "5"
+          ]
         }
+      },
+      "response": []
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n     \"email\": \"alex@example.com\",\r\n     \"password\": \"mypassword123\"\r\n   }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/customers/login",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "customers",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "My Tickets",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Create Part",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Brake Pad Set\",\r\n    \"price\": 45.99\r\n  }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/inventory/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "inventory",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add Part to Ticket",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Most Tickets",
+      "request": {
+        "method": "GET",
+        "header": []
       },
       "response": []
     }
