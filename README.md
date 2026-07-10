@@ -104,6 +104,40 @@ Service Tickets.
 | PUT    | /<id> | Update a part |
 | DELETE | /<id> | Delete a part |
 
+## API Documentation (Swagger)
+
+Interactive API documentation is built with `flask-swagger` and
+`flask-swagger-ui`. The spec lives at `app/static/swagger.yaml` and
+covers every route: path, method, tags, summary/description, request
+body shape, response shape, and example payloads. Token-authenticated
+routes are marked with the `bearerAuth` security scheme.
+
+1. Run the app: `python run.py`
+2. Open `http://127.0.0.1:5000/api/docs/` in your browser.
+3. Use "Try it out" on any endpoint to send a live request. For
+   protected routes, first hit `POST /customers/login` to get a token,
+   then click the padlock icon and enter `Bearer <token>`.
+
+## Testing
+
+Automated tests live in `tests/`, one file per blueprint
+(`test_customer.py`, `test_mechanic.py`, `test_service_ticket.py`,
+`test_inventory.py`), built with Python's built-in `unittest` module.
+Every route has at least one test, plus negative tests for validation
+errors, 404s, and missing/invalid auth tokens.
+
+Tests run against a throwaway SQLite database (`TestingConfig` in
+`config.py`) so they never touch your real MySQL data, and rate
+limiting is disabled during tests so login-related tests don't get
+blocked by earlier test runs.
+
+Run the full suite:
+
+    python -m unittest discover tests
+
+A Postman collection (`Mechanic Shop API.postman_collection.json`) is
+also included for manual/exploratory testing.
+
 ## Sample request bodies
 
 Create a customer (POST /customers/):

@@ -1,9 +1,11 @@
 flask
-   flask-sqlalchemy
-   flask-marshmallow
-   marshmallow-sqlalchemy
-   mysql-connector-python
-   python-dotenv
-   flask-limiter
-   flask-caching
-   python-jose
+flask-sqlalchemy
+flask-marshmallow
+marshmallow-sqlalchemy
+mysql-connector-python
+python-dotenv
+flask-limiter
+flask-caching
+python-jose
+flask-swagger
+flask-swagger-ui

@@ -1,5 +1,17 @@
 from flask import Flask
+from flask_swagger_ui import get_swaggerui_blueprint
 from .extensions import db, ma, limiter, cache
+
+SWAGGER_URL = '/api/docs'          # URL for exposing Swagger UI (no trailing '/')
+API_URL = '/static/swagger.yaml'   # Where the OpenAPI spec is served from
+
+swaggerui_blueprint = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config={
+        'app_name': "Mechanic Shop API"
+    }
+)
 
 
 def create_app(config_class='config.Config'):
@@ -20,5 +32,6 @@ def create_app(config_class='config.Config'):
     app.register_blueprint(mechanic_bp, url_prefix='/mechanics')
     app.register_blueprint(service_ticket_bp, url_prefix='/service-tickets')
     app.register_blueprint(inventory_bp, url_prefix='/inventory')
+    app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 
     return app
