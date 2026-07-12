@@ -3,9 +3,9 @@ info:
   title: "Mechanic Shop API"
   description: "REST API for managing Customers, Mechanics, Service Tickets, and Inventory for a mechanic shop. Customers authenticate via JWT to update/delete their own account and view their own service tickets."
   version: "1.0.0"
-host: "127.0.0.1:5000"
+host: "mechanic-shop-1-8kj2.onrender.com"
 schemes:
-  - "http"
+  - "https"
 consumes:
   - "application/json"
 produces:
