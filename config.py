@@ -1,28 +1,5 @@
 import os
-from dotenv import load_dotenv
 
-load_dotenv()
-
-DB_PASSWORD = os.getenv('DB_PASSWORD')
-
-
-class Config:
-    SQLALCHEMY_DATABASE_URI = f'mysql+mysqlconnector://root:{DB_PASSWORD}@localhost/mechanic_shop_db'
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-
-    SECRET_KEY = os.getenv('SECRET_KEY', 'dev-secret-change-me')
-
-    CACHE_TYPE = 'SimpleCache'
-    CACHE_DEFAULT_TIMEOUT = 60
-
-
-import os
-
-# python-dotenv is only used for local development, to load a .env file.
-# It's intentionally NOT in requirements.txt so it isn't a hard dependency
-# in production (Render sets real environment variables directly, no .env
-# file involved). Import it defensively so the app still starts if it's
-# not installed.
 try:
     from dotenv import load_dotenv
     load_dotenv()
